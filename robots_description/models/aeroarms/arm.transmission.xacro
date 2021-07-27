@@ -17,14 +17,14 @@
 
   <!-- Left arm -->
   <qside_x_transmission side="1" x="1"/>
-  <qside_x_transmission side="1" x="2"/>
-  <qside_x_transmission side="1" x="3"/>
-  <qside_x_transmission side="1" x="4"/>
+  <!-- <qside_x_transmission side="1" x="2"/> -->
+  <!-- <qside_x_transmission side="1" x="3"/>
+  <qside_x_transmission side="1" x="4"/> -->
 
   <!-- Right arm -->
-  <qside_x_transmission side="2" x="1"/>
+  <!-- <qside_x_transmission side="2" x="1"/>
   <qside_x_transmission side="2" x="2"/>
   <qside_x_transmission side="2" x="3"/>
-  <qside_x_transmission side="2" x="4"/>
+  <qside_x_transmission side="2" x="4"/> -->
 
 </robot>
