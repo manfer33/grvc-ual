@@ -22,15 +22,15 @@ xmlns:xacro="http://ros.org/wiki/xacro">
   <gazebo reference="left_shoulder">
     <turnGravityOff>true</turnGravityOff>
   </gazebo>
-  <!-- <gazebo reference="left_upperarm">
+  <gazebo reference="left_upperarm">
     <turnGravityOff>true</turnGravityOff>
-  </gazebo> -->
-  <!-- <gazebo reference="left_elbow">
+  </gazebo>
+  <gazebo reference="left_elbow">
     <turnGravityOff>true</turnGravityOff>
   </gazebo>
   <gazebo reference="left_forearm">
     <turnGravityOff>true</turnGravityOff>
-  </gazebo> -->
+  </gazebo>
 
   <!-- Gravity at right arm -->
   <!-- <gazebo reference="right_shoulder">

@@ -64,7 +64,7 @@
     >
     <xacro:insert_block name="body_inertia" />
   </xacro:multirotor_base_macro>
-
+<!-- 
   <xacro:camera_macro
     namespace="${namespace}"
     parent_link="base_link"
@@ -96,7 +96,7 @@
     <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2} "/>
     <parent link="camera_depth_base_link"/>
     <child link="camera_depth_link"/>
-  </joint>
+  </joint> -->
 
   <!-- Left arm -->
   <!-- Inertias are not symmetrical, can't use xacro -->
@@ -113,23 +113,24 @@
         <mesh filename="package://robots_description/models/aeroarms/meshes/visual/left/shoulder.dae" scale=".001 .001 .001"/>
       </geometry>
     </visual>
-    <collision>
+    <!-- <collision>
       <geometry>
         <mesh filename="package://robots_description/models/aeroarms/meshes/collision/left/shoulder.dae" scale=".001 .001 .001"/>
       </geometry>
-    </collision>
+    </collision> -->
   </link>
   <joint name="q1_1" type="revolute">
     <!--origin xyz="200.781e-3 125.235e-3 -123.775e-3"/-->
-    <origin xyz="50e-3 120e-3 10e-3"/>
+    <!-- <origin xyz="50e-3 120e-3 10e-3"/> -->
+    <origin xyz="0 0 -100e-3"/>
     <parent link="base_link"/>
     <child link="left_shoulder"/>
-    <axis xyz="0 1 0"/>
+    <axis xyz="1 0 0"/>
     <dynamics damping="0.7" friction="0.4"/>
-    <limit effort="5000.0" lower="${-0.5*pi}" upper="${0.5*pi}" velocity="1"/>
+    <limit effort="5.0" lower="${-0.5*pi}" upper="${0.5*pi}" velocity="1"/>
   </joint>
 
-  <!-- <link name="left_upperarm">
+  <link name="left_upperarm">
     <inertial>
       <origin xyz="-10.426e-3 -26.142e-3 -82.655e-3"/>
       <mass value="0.1"/>
@@ -140,22 +141,22 @@
         <mesh filename="package://robots_description/models/aeroarms/meshes/visual/left/upperarm.dae" scale=".001 .001 .001"/>
       </geometry>
     </visual>
-    <collision>
+    <!-- <collision>
       <geometry>
         <mesh filename="package://robots_description/models/aeroarms/meshes/collision/left/upperarm.dae" scale=".001 .001 .001"/>
       </geometry>
-    </collision>
+    </collision> -->
   </link>
   <joint name="q1_2" type="revolute">
     <origin xyz="0 25.9e-3 -30e-3"/>
     <parent link="left_shoulder"/>
     <child link="left_upperarm"/>
     <axis xyz="0 1 0"/>
-    <dynamics damping="0.7" friction="0.4"/>
-    <limit effort="5000.0" lower="${-0.5*pi}" upper="${0.5*pi}" velocity="1"/>
-  </joint> -->
+    <dynamics damping="0.0" friction="0.6"/>
+    <limit effort="5.5" lower="${-0.5*pi}" upper="${0.5*pi}" velocity="2.5"/>
+  </joint>
 
-  <!-- <link name="left_elbow">
+  <link name="left_elbow">
     <inertial>
       <origin xyz="45.132e-3 -25.144e-3 -4.463e-3"/>
       <mass value="0.1"/>
@@ -166,11 +167,11 @@
         <mesh filename="package://robots_description/models/aeroarms/meshes/visual/left/elbow.dae" scale=".001 .001 .001"/>
       </geometry>
     </visual>
-    <collision>
+    <!-- <collision>
       <geometry>
         <mesh filename="package://robots_description/models/aeroarms/meshes/collision/left/elbow.dae" scale=".001 .001 .001"/>
       </geometry>
-    </collision>
+    </collision> -->
   </link>
   <joint name="q1_3" type="revolute">
     <origin xyz="0 13e-3 -250e-3" rpy="0 ${0.5*pi} 0"/>
@@ -178,10 +179,10 @@
     <child link="left_elbow"/>
     <axis xyz="0 1 0"/>
     <dynamics damping="0.7" friction="0.4"/>
-    <limit effort="5000.0" lower="${-pi}" upper="0" velocity="1"/>
-  </joint> -->
+    <limit effort="5.0" lower="${-pi}" upper="0" velocity="1"/>
+  </joint>
 
-  <!-- <link name="left_forearm">
+  <link name="left_forearm">
     <inertial>
       <origin xyz="149.994e-3 -1.858e-3 0.041e-3"/>
       <mass value="0.1"/>
@@ -192,11 +193,11 @@
         <mesh filename="package://robots_description/models/aeroarms/meshes/visual/left/forearm.dae" scale=".001 .001 .001"/>
       </geometry>
     </visual>
-    <collision>
+    <!-- <collision>
       <geometry>
         <mesh filename="package://robots_description/models/aeroarms/meshes/collision/left/forearm.dae" scale=".001 .001 .001"/>
       </geometry>
-    </collision>
+    </collision> -->
   </link>
   <joint name="q1_4" type="revolute">
     <origin xyz="80.9e-3 -34.502e-3 0"/>
@@ -204,14 +205,14 @@
     <child link="left_forearm"/>
     <axis xyz="1 0 0"/>
     <dynamics damping="0.7" friction="0.4"/>
-    <limit effort="5000.0" lower="${-0.5*pi}" upper="${0.5*pi}" velocity="1"/>
-  </joint> -->
+    <limit effort="5.0" lower="${-0.5*pi}" upper="${0.5*pi}" velocity="1"/>
+  </joint>
 
-  <!-- <link name="left_wrist_pitch">
+  <link name="left_wrist_pitch">
     <inertial>
       <origin xyz="0 0 0"/>
-      <mass value="0.021"/>
-      <inertia ixx="8.5833e-04" ixy="0" ixz="0" iyy="8.5833e-04" iyz="0" izz="5e-04"/>
+      <mass value="0.1"/>
+      <inertia ixx="8.5833e-04" ixy="0" ixz="0" iyy="8.5833e-04" iyz="0" izz="5.0e-04"/>
     </inertial>
     <visual>
       <origin xyz="0 -32e-03 0"/>
@@ -219,12 +220,12 @@
         <mesh filename="package://robots_description/models/aeroarms/meshes/visual/left/wrist_pitch.dae" scale=".001 .001 .001"/>
       </geometry>
     </visual>
-    <collision>
+    <!-- <collision>
       <origin xyz="0 -32e-03 0"/>
       <geometry>
         <mesh filename="package://robots_description/models/aeroarms/meshes/collision/left/wrist_pitch.dae" scale=".001 .001 .001"/>
       </geometry>
-    </collision>
+    </collision> -->
   </link>
   <joint name="q1_5" type="revolute">
     <origin xyz="185e-03 -2e-03 0" rpy="0 0 ${0.5*pi}"/>
@@ -232,8 +233,8 @@
     <child link="left_wrist_pitch"/>
     <axis xyz="1 0 0"/>
     <dynamics damping="0.7" friction="0.4"/>
-    <limit effort="5000.0" lower="${-0.5*pi}" upper="${0.5*pi}" velocity="1"/>
-  </joint> -->
+    <limit effort="5.0" lower="${-0.5*pi}" upper="${0.5*pi}" velocity="1"/>
+  </joint>
 
   <!-- <link name="left_wrist_yaw">
     <inertial>
