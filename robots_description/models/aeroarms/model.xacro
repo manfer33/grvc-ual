@@ -14,6 +14,8 @@
   <xacro:arg name='enable_ground_truth' default='false' />
   <xacro:arg name='enable_logging' default='false' />
 
+  <xacro:arg name='eef_mass' default='0.1' />
+
   <!-- macros for gazebo plugins, sensors -->
   <xacro:include filename="$(find robots_description)/urdf/component_snippets.xacro" />
 

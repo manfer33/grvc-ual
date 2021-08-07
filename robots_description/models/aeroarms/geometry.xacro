@@ -211,7 +211,7 @@
   <link name="left_wrist_pitch">
     <inertial>
       <origin xyz="0 0 0"/>
-      <mass value="0.1"/>
+      <mass value="$(arg eef_mass)"/>
       <inertia ixx="8.5833e-04" ixy="0" ixz="0" iyy="8.5833e-04" iyz="0" izz="5.0e-04"/>
     </inertial>
     <visual>

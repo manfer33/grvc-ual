@@ -39,6 +39,10 @@ def main():
                         help='initial position and yaw frame reference; id [map] refers to gazebo origin')
     parser.add_argument('-append_xacro_args', type=str, nargs='+',
                         help='append additional arguments for xacro command')
+
+    parser.add_argument('-eef_mass', type=float, default=0.1,
+                        help='End effector mass')
+
     args, unknown = parser.parse_known_args()
     utils.check_unknown_args(unknown)
 
@@ -91,7 +95,8 @@ def main():
         " enable_ground_truth:=false" + \
         " enable_logging:=false" + \
         " enable_camera:=false" + \
-        " enable_wind:=false"
+        " enable_wind:=false" + \
+        " eef_mass:=" + str(args.eef_mass)
         if args.ual_backend == 'light':
             xacro_args = xacro_args + \
             " enable_mavlink_interface:=false" + \

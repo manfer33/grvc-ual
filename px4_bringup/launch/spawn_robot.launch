@@ -23,6 +23,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     <arg name="frame_id" default="map"/>
     <arg name="append_xacro_args" default=""/>
     <arg name="simulate_safety_pilot" default="true"/>
+    <arg name="eef_mass" default="0.1"/>
 
     <arg name="fcu_url" default="udp://:14550@localhost:14556"/>
     <arg name="gcs_url" default="udp://@localhost"/>
@@ -36,7 +37,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
         <node pkg="px4_bringup" type="spawn_gzmodel.py" name="spawn_gzmodel_$(arg id)" output="screen"
         args="-model=$(arg robot_model) -id=$(arg id) -x $(arg x) -y $(arg y) -z $(arg z) -Y $(arg yaw) 
               -description_package=$(arg description_package) -material=$(arg material) -frame_id=$(arg frame_id) 
-              -append_xacro_args $(arg append_xacro_args)"/>
+              -append_xacro_args=$(arg append_xacro_args) -eef_mass=$(arg eef_mass)"/>
 
         <!-- Run px4 controller -->
         <!-- Important parameter cwd="node", px4 link generation may cause errors otherwise -->
